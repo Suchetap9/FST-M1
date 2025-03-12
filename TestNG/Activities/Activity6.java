@@ -2,7 +2,13 @@ package activities;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 
@@ -37,7 +43,7 @@ public class Activity6 {
         
         //Assert Message
         String loginMessage = driver.findElement(By.id("action-confirmation")).getText();
-        Assert.assertEquals(loginMessage, "Welcome Back, admin");
+        assertEquals(loginMessage, "Welcome Back, admin");
     }
 
     @AfterClass
