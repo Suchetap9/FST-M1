@@ -1,0 +1,71 @@
+package activities;
+
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+public class Activity1 {
+	@Test(priority=1)
+	  public void addNewPet() {
+		  // Create Request Body
+		  Map<String, Object> reqBody = new HashMap<>();
+		  reqBody.put("id", 56579);
+		  reqBody.put("name", "Eevie");
+		  reqBody.put("status","alive");
+		  
+		  // Send request, get response, assert response
+		  given()
+		        .baseUri("https://petstore.swagger.io/v2/pet")
+		        .header("Content-type","application/json")
+		        .body(reqBody)
+		  .when()
+		       .post()
+		  .then()
+		       .statusCode(200)
+		       .body("name", equalTo("Eevie"))
+		       .body("status", equalTo("alive"));
+		  
+	}
+	  @Test(priority=2)
+	  
+	  public void getPetInfo() {
+		 given()
+		        .baseUri("https://petstore.swagger.io/v2/pet")
+		        .header("Content-type","application/json")
+		        .pathParam("petId", 56579)
+		        .log().all()
+		 .when()
+		       .get("/{petId}")
+		 .then()
+		       .log().all()
+		       .statusCode(200)
+		       .body("name", equalTo("Eevie"))
+		       .body("status", equalTo("alive"));
+		
+	  }
+	  
+      @Test(priority=3)
+	  
+	  public void deletePet() {
+		 given()
+		        .baseUri("https://petstore.swagger.io/v2/pet")
+		        .header("Content-type","application/json")
+		        .pathParam("petId", 56579)
+		        .log().all()
+		 .when()
+		       .delete("/{petId}")
+		 .then()
+		       .log().all()
+		       .statusCode(200)
+		       .body("message", equalTo("56579"));
+		       		
+	  }	  
+
+}
