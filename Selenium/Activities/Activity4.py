@@ -1,34 +1,29 @@
 # Import webdriver from selenium
 from selenium import webdriver
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.color import Color
 
 # Start the Driver
 with webdriver.Firefox() as driver:
-    # Declare the actions variable
-    actions = ActionChains(driver)
     # Navigate to the URL
-    driver.get("https://training-support.net/webelements/mouse-events")
+    driver.get("https://training-support.net/webelements/target-practice")
 
     # Print the title of the page
     print("Page title is: ", driver.title)
 
-    # Find the elements that can be clicked
-    cargoLock = driver.find_element(By.XPATH, "//h1[text()='Cargo.lock']")
-    cargoToml = driver.find_element(By.XPATH, "//h1[text()='Cargo.toml']")
-    srcButton = driver.find_element(By.XPATH, "//h1[text()='src']")
-    targetButton = driver.find_element(By.XPATH, "//h1[text()='target']")
+    # Find the 3rd header element on the page using XPath
+    third_heading = driver.find_element(By.XPATH, "//h3[contains(text(), '#3')]")
+    print("Third heading text is: ", third_heading.text)
 
-    # Perform left click on Cargo.lock and then on Cargo.toml
-    actions.click(cargoLock).pause(1).move_to_element(cargoToml).pause(5).click(cargoToml).perform()
-    # Print the front side text
-    actionMessage = driver.find_element(By.ID, "result").text
-    print(actionMessage)
+    # Find the 5th header element on the page using XPath
+    fifth_heading_color = Color.from_string(driver.find_element(By.XPATH, "//h5[contains(text(), '#5')]").value_of_css_property("color"))
+    print("Fifth heading colour as Hexcode: ", fifth_heading_color.hex)
+    print("Fifth heading colour as RGB: ", fifth_heading_color.rgb)
 
-    # Perform double click on src then right click on target
-    actions.double_click(srcButton).pause(3).pause(5).context_click(targetButton).pause(3).perform()
-    # and then open it
-    actions.click(driver.find_element(By.XPATH, ("//div[@id='menu']/div/ul/li[1]"))).pause(5).perform()
-    # Print the front side text
-    actionMessage = driver.find_element(By.ID, "result").text
-    print(actionMessage)
+    # Find the Purple button element on the page
+    purple_button = driver.find_element(By.XPATH, "//button[text()='Purple']")
+    print("Purple button's classes are: ", purple_button.get_attribute("class"))
+
+    # Find the Slate button element on the page
+    slate_button = driver.find_element(By.XPATH, "//button[contains(@class, 'slate')]")
+    print("Text in slate button is: ", slate_button.text)
