@@ -4,38 +4,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 
-public class Activity10 {
+public class Activity5 {
     public static void main(String[] args) {
         // Initialize the Firefox driver
         WebDriver driver = new FirefoxDriver();
-        // Create the Actions object
-        Actions builder = new Actions(driver);
 
         // Open the page
-        driver.get("https://training-support.net/webelements/drag-drop");
+        driver.get("https://training-support.net/webelements/dynamic-controls");
         // Print the title of the page
         System.out.println("Page title: " + driver.getTitle());
 
-        // Find the football
-        WebElement football = driver.findElement(By.id("ball"));
-        // Find the dropzone1
-        WebElement dropzone1 = driver.findElement(By.id("dropzone1"));
-        // Find the dropzone2
-        WebElement dropzone2 = driver.findElement(By.id("dropzone2"));
-
-        // Perform drag and drop to dropzone 1
-        builder.clickAndHold(football).moveToElement(dropzone1).pause(5000).release().build().perform();
-        if(dropzone1.findElement(By.className("dropzone-text")).getText().equals("Dropped!")) {
-        	System.out.println("Ball was dropped in Dropzone 1");
-        }
-
-        // Perform drag and drop to dropzone 2
-        builder.dragAndDrop(football, dropzone2).pause(5000).build().perform();
-        if(dropzone2.findElement(By.className("dropzone-text")).getText().equals("Dropped!")) {
-        	System.out.println("Ball was dropped in Dropzone 2");
-        }
+        // Find the checkbox
+        WebElement checkbox = driver.findElement(By.id("checkbox"));
+        // Find the toggle button and click it
+        driver.findElement(By.xpath("//button[text()='Toggle Checkbox']")).click();
+        // Check if it is displayed on the page
+        System.out.println("Checkbox is displayed: " + checkbox.isDisplayed());
+        // Click the button again
+        driver.findElement(By.xpath("//button[text()='Toggle Checkbox']")).click();
+        // Check if it is displayed on the page
+        System.out.println("Checkbox is displayed: " + checkbox.isDisplayed());
 
         // Close the browser
         driver.quit();
