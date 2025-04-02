@@ -43,14 +43,14 @@ public class Activity1 {
         // Perform the calculation
         driver.findElement(AppiumBy.id("digit_5")).click();
         driver.findElement(AppiumBy.accessibilityId("multiply")).click();
-        driver.findElement(AppiumBy.id("digit_8")).click();
+        driver.findElement(AppiumBy.id("digit_6")).click();
         driver.findElement(AppiumBy.accessibilityId("equals")).click();
 
         // Find the result
         String result = driver.findElement(AppiumBy.id("result_final")).getText();
 
         // Assertion
-        Assert.assertEquals(result, "40");
+        Assert.assertEquals(result, "30");
     }
 
 
