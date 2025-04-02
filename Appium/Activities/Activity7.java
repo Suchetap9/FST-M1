@@ -50,7 +50,7 @@ public class Activity7 {
 	// Test method
 	@Test
 	public void uiScrollableTest() {
-		// Wait for page to load
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.className("android.widget.Image")));
 		// UiScrollable object string
 		String UiScrollable = "UiScrollable(UiSelector().scrollable(true))";
