@@ -1,4 +1,4 @@
-package projects;
+package liveProject;
 
 import static org.testng.Assert.assertEquals;
 import static activities.ActionsBase.longPress;
