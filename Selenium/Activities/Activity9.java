@@ -6,26 +6,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class Activity9 {
-    public static void main(String[] args) {
-        // Create a new instance of the Firefox driver
-        WebDriver driver = new FirefoxDriver();
-        // Create the Actions object
-        Actions builder = new Actions(driver);
+public class activity9 {
 
-        // Open the page
-        driver.get("https://training-support.net/webelements/keyboard-events");
-        // Print the title of the page
-        System.out.println("Page title: " + driver.getTitle());
-
-        // Press the key
-        builder.sendKeys("This is coming from Selenium").sendKeys(Keys.RETURN).build().perform();
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new FirefoxDriver();
         
-        // Print the message from the page
-        String pageText = driver.findElement(By.cssSelector("h1.mt-3")).getText();
-        System.out.println(pageText);
+		Actions builder = new Actions(driver);
 
-        // Close the browser
+        // Open the browser
+        driver.get("https://training-support.net/webelements/keyboard-events");
+
+        // Verify page title
+        System.out.println("Page title is: " + driver.getTitle());
+		
+		//Task 
+        //On the page, type out a string from the Selenium script to show on the page
+        //Print the message to the console.
+		builder.sendKeys("This is coming from Selenium").sendKeys(Keys.RETURN).build().perform();
+		
+		String msg = driver.findElement(By.cssSelector("h1.mt-3")).getText();
+		System.out.println(msg);
+		
+		// Close the browser
         driver.quit();
-    }
+
+	}
+
 }
