@@ -1,23 +1,23 @@
-# Import webdriver from selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-# Start the Driver
 with webdriver.Firefox() as driver:
-    # Navigate to the URL
-    driver.get("https://training-support.net/webelements/dynamic-controls")
+    driver.get(" https://training-support.net/webelements/dynamic-controls")
 
-    # Print the title of the page
-    print("Page title is: ", driver.title)
+    print("The title of the page is :", driver.title)
+
     
-	# Find the checkbox
-    checkbox = driver.find_element(By.ID, "checkbox")
-    # Find the checkbox toggle button
+    #Find the checkbox input element.
+    checkbox_button = driver.find_element(By.ID,"checkbox")
+    #toggle button
     checkbox_toggle = driver.find_element(By.XPATH, "//button[text()='Toggle Checkbox']")
-    # Verify if the checkbox is displayed or not
-    print("Checkbox is visible: ", checkbox.is_displayed())
+    
+    #Check if it is visible on the page.
+    print("Is the check box visible ? " ,checkbox_button.is_displayed())
 
-    # Click the checkbox_toggle button to hide checkbox
+    #Click the "Remove Checkbox" button.
     checkbox_toggle.click()
-    # Verify again if the checkbox is displayed or not
-    print("Checkbox is visible: ", checkbox.is_displayed())
+    #Check if it is visible again and print the result.
+    print("Is the check box visible, after clicking? " ,checkbox_button.is_displayed())
+
+    driver.close
