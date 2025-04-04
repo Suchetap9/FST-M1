@@ -1,5 +1,4 @@
-package liveProject;
-
+package projects;
 import static activities.ActionsBase.doSwipe;
 import static org.testng.Assert.assertEquals;
 
@@ -93,5 +92,3 @@ public class Activity4 {
 		driver.quit();
 	}
 }
-   
-  
