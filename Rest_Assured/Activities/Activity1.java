@@ -20,8 +20,8 @@ public class Activity1 {
 		//create request body
 		
 	   Map<String, Object> reqBody = new HashMap<>();
-	   reqBody.put("id", 111222);
-	   reqBody.put("name", "Zoya");
+	   reqBody.put("id", 56579);
+	   reqBody.put("name", "Eevie");
 	   reqBody.put("status", "alive");
 	   
 	   //Send request, get response, assert response
@@ -33,7 +33,7 @@ public class Activity1 {
          .post()
 	    .then()
 	     .statusCode(200)
-	     .body("name", equalTo("Zoya"))
+	     .body("name", equalTo("Eevie"))
 	     .body("status", equalTo("alive"));
 	     
 	   }
@@ -44,14 +44,14 @@ public class Activity1 {
 		given()
 		.baseUri("https://petstore.swagger.io/v2/pet")
 		.header("Content-Type", "application/json")
-		.pathParam("petId" , 111222)
+		.pathParam("petId" , 56579)
 		.log().all()
 		.when()
 		.get("/{petId}")
 		.then()
 		 .log().all()
 		 .statusCode(200)
-		 .body("name", equalTo("Zoya"))
+		 .body("name", equalTo("Eevie"))
 	     .body("status", equalTo("alive"));
 	     
 	}
@@ -64,14 +64,14 @@ public class Activity1 {
 		given()
 		.baseUri("https://petstore.swagger.io/v2/pet")
 		.header("Content-Type", "application/json")
-		.pathParam("petId" , 111222)
+		.pathParam("petId" , 56579)
 		.log().all()
 		.when()
 		.delete("/{petId}")
 		.then()
 		 .log().all()
 		 .statusCode(200)
-		 .body("name", equalTo("Zoya"))
+		 .body("name", equalTo("Eevie"))
 	     .body("status", equalTo("alive"));
 		
 	
